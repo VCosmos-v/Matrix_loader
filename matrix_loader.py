@@ -1,3 +1,4 @@
+import asyncio
 from typing import List
 import httpx
 
@@ -59,3 +60,15 @@ async def get_matrix(url: str) -> List[int]:
 
     return result
 
+if __name__ == "__main__":
+    SOURCE_URL = "https://raw.githubusercontent.com/avito-tech/python-trainee-assignment/main/matrix.txt"
+    TRAVERSAL = [
+        10, 50, 90, 130,
+        140, 150, 160, 120,
+        80, 40, 30, 20,
+        60, 100, 110, 70,
+    ]
+
+    result = asyncio.run(get_matrix(SOURCE_URL))
+    assert result == TRAVERSAL, f"Ожидалось {TRAVERSAL}, получено {result}"
+    print("Тест пройден успешно! Результат:", result)
